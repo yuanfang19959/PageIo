@@ -1,0 +1,23 @@
+.content {
+  margin: 0 auto;
+  padding: 21px 116px;
+  :global {
+    .ant-input {
+      height: 48px;
+      border-radius: 0;
+    }
+  }
+  .submitbtn {
+    width: 104px;
+    height: 38px;
+    margin-right: 24px;
+    font-size: 14px;
+    line-height: 38px;
+    background-color: #217eff;
+    border-radius: 4px;
+    margin-top: 24px;
+  }
+}
+.yuqueditor {
+  border: 1px solid #d9d9d9;
+}

@@ -1,0 +1,89 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/bin/yarn install
+
+PATH: 
+  /usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+
+Yarn version: 
+  1.22.17
+
+Node version: 
+  20.18.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  SyntaxError: /Users/zhengzhibin/Desktop/PageIo/package.json: Unexpected non-whitespace character after JSON at position 411
+      at JSON.parse (<anonymous>)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (/usr/local/lib/node_modules/yarn/lib/cli.js:310:30)
+      at /usr/local/lib/node_modules/yarn/lib/cli.js:321:13
+
+npm manifest: 
+  {
+    "name": "my-app",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "react": "^18",
+      "react-dom": "^18",
+      "next": "14.2.17"
+    },
+    "devDependencies": {
+      "typescript": "^5",
+      "@types/node": "^20",
+      "@types/react": "^18",
+      "@types/react-dom": "^18"
+    }
+  }
+  {
+    "name": "newstack",
+    "author": {
+      "name": "yuanfang19959.zzb"
+    },
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "lint": "next lint"
+    },
+    "dependencies": {
+      "@alipay/lakex-doc": "^1.55.0",
+      "@ant-design/nextjs-registry": "^1.0.1",
+      "antd": "^5.21.6",
+      "jsdom": "^25.0.1",
+      "next": "14.2.13",
+      "react": "^18",
+      "react-dom": "^18",
+      "react-responsive": "^9.0.2",
+      "sass": "^1.79.4",
+      "scss": "^0.2.4"
+    },
+    "devDependencies": {
+      "@types/node": "^20",
+      "@types/react": "^18",
+      "@types/react-dom": "^18",
+      "@types/react-helmet": "^6.1.11",
+      "babel-plugin-import": "^1.13.8",
+      "eslint": "^8",
+      "eslint-config-next": "14.2.13",
+      "typescript": "^5"
+    },
+    "repository": "https://code.alipay.com/zzb01435084/newstack.git"
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
