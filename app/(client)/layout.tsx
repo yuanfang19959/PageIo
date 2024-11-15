@@ -22,9 +22,17 @@ export default function RootLayout(props) {
   return (
     <html>
       <body>
+      <link rel="stylesheet" href="https://gw.alipayobjects.com/os/lib/antd/5.22/dist/antd.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_lakex-doc/1.48.0/umd/doc.css"
+        />
+        <script src="https://gw.alipayobjects.com/os/lib/react/18.3.0-next-fecc288b7-20221025/umd/react.production.min.js"></script>
+        <script src="https://gw.alipayobjects.com/os/lib/react-dom/18.3.0-next-fecc288b7-20221025/umd/react-dom.production.min.js"></script>
+        <script src="https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_lakex-doc/1.48.0/umd/doc.umd.js"></script>
         <BaseHeader />
-          {props.children}
-        <BaseFooter/>
+        {props.children}
+        <BaseFooter />
       </body>
     </html>
   );

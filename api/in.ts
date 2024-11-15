@@ -1,6 +1,6 @@
 
 import request from '@/utils/request'
-const BASEURL = "http://127.0.0.1:7001";
+import { BASEURL } from '@/constants/index'
 export const getBlogList = async (body: any) => {
   const res = await request(`${BASEURL}/api/?${new URLSearchParams(body as any)}`, {
     headers: {

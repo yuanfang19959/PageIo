@@ -1,6 +1,6 @@
 /* eslint-disable */
 "use client";
-import React from 'react';
+import React from "react";
 import { Button, Form, Input } from "antd";
 import { useEffect, useState } from "react";
 import styles from "./index.module.scss";
@@ -13,44 +13,26 @@ const Editor = () => {
   const [form] = Form.useForm();
   useEffect(() => {
     const domNode = window.document.getElementById("yuqueditor");
-
-    setTimeout(() => {
-        
-        // 创建script元素
-        const script = document.createElement('script');
-        // 设置src属性为JavaScript文件的URL
-        script.src = 'https://gw.alipayobjects.com/render/p/yuyan_npm/@alipay_lakex-doc/1.48.0/umd/doc.umd.js';
-        // 将script元素添加到document中，通常添加到body元素的末尾
-        document.body.appendChild(script);
-   
-        // 可以添加一个事件监听器，在脚本加载完成后执行一些操作（可选）
-        // script.onload = function () {
-        //    if(window.Doc) {
-        //        const { createOpenEditor } = window.Doc;
-        //        setTimeout(() => {
-       
-        //            const engine = createOpenEditor(domNode, {
-        //              image: {
-        //                uploadFileURL: "/api/upload", // 图片上传路径，post file请求
-        //                crawlURL: "/api/upload", // 图片url 转换成url post data：{url}
-        //              },
-        //              file: {
-        //                uploadFileURL: "/api/upload", // 文件上传路径
-        //              },
-        //            });
-        //            // 设置内容，如果是新建则设置成空，非新建则设置成上一次的内容
-        //            engine.setDocument("text/lake", "");
-        //            // 文档变动事件
-        //            engine.on("contentchange", () => {
-        //              // 获取最新的编辑器lake内容
-        //              const lake = engine.getDocument("text/lake");
-        //              setContent(lake);
-        //            });
-        //        }, 500)
-        //    }
-        // };
-    }, 2000)
-
+    const doc = (window as any).Doc;
+    if (doc) {
+      const engine = (window as any).Doc?.createOpenEditor(domNode, {
+        image: {
+          uploadFileURL: "/api/upload", // 图片上传路径，post file请求
+          crawlURL: "/api/upload", // 图片url 转换成url post data：{url}
+        },
+        file: {
+          uploadFileURL: "/api/upload", // 文件上传路径
+        },
+      });
+      // 设置内容，如果是新建则设置成空，非新建则设置成上一次的内容
+      engine.setDocument("text/lake", "");
+      // 文档变动事件
+      engine.on("contentchange", () => {
+        // 获取最新的编辑器lake内容
+        const lake = engine.getDocument("text/lake");
+        setContent(lake);
+      });
+    }
   }, []);
 
   const onFinish = (values: any) => {
@@ -66,8 +48,12 @@ const Editor = () => {
 
   return (
     <>
-      <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+      <script
+        src="https://unpkg.com/react@18/umd/react.production.min.js"
+      ></script>
+      <script
+        src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
+      ></script>
       <div className={styles.content}>
         <div className={styles.form}>
           <Form onFinish={onFinish} layout="vertical" form={form}>

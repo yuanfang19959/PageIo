@@ -1,18 +1,23 @@
 import React from "react";
-import styles from "./index.module.scss";
 import Link from "next/link";
+import handleTimeBlog from "@/utils/parseTime";
+import { BASEURL } from "@/constants";
+import styles from "./index.module.scss";
 
-const BlogList = () => {
+async function BlogList({ params }) {
+  const res = await fetch(`${BASEURL}/api/bloglist`);
+  const { data: list} = await res.json();
+
   return (
     <div className={styles.content}>
       <div className={styles.centerbox}>
         <div className={styles.bloglist}>
           <ul className={styles.blogcontent}>
-            {[1, 2, 3, 4, 5].map((v) => {
+            {list.map((v: any) => {
               return (
-                <li className={styles.blogitem} key={v}>
-                  <Link href="/blog/1" className={styles.customLink}>
-                    <h3 className={styles.blogtitle}>下班了吗</h3>
+                <li className={styles.blogitem} key={v.id}>
+                  <Link href={`/blog/${v.id}`} className={styles.customLink}>
+                    <h3 className={styles.blogtitle}>{v.title}</h3>
                   </Link>
 
                   <div className={styles.bloginfo}>
@@ -21,14 +26,14 @@ const BlogList = () => {
                         src="https://gw.alipayobjects.com/mdn/ob_asset/afts/img/A*CtHtSJ2gtBEAAAAAAAAAAAAAARQnAQ"
                         alt="tag"
                       />
-                      杂七杂八
+                      {v.category}
                     </span>
                     <span>
                       <img
                         src="https://gw.alipayobjects.com/mdn/ob_asset/afts/img/A*hYDGQKcmUoYAAAAAAAAAAAAAARQnAQ"
                         alt=""
                       />
-                      5天前
+                      {handleTimeBlog(v.data)}
                     </span>
                   </div>
                 </li>
