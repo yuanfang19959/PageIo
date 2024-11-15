@@ -24,31 +24,31 @@ const Editor = () => {
         document.body.appendChild(script);
    
         // 可以添加一个事件监听器，在脚本加载完成后执行一些操作（可选）
-        script.onload = function () {
-           if(window.Doc) {
-               const { createOpenEditor } = window.Doc;
-               setTimeout(() => {
+        // script.onload = function () {
+        //    if(window.Doc) {
+        //        const { createOpenEditor } = window.Doc;
+        //        setTimeout(() => {
        
-                   const engine = createOpenEditor(domNode, {
-                     image: {
-                       uploadFileURL: "/api/upload", // 图片上传路径，post file请求
-                       crawlURL: "/api/upload", // 图片url 转换成url post data：{url}
-                     },
-                     file: {
-                       uploadFileURL: "/api/upload", // 文件上传路径
-                     },
-                   });
-                   // 设置内容，如果是新建则设置成空，非新建则设置成上一次的内容
-                   engine.setDocument("text/lake", "");
-                   // 文档变动事件
-                   engine.on("contentchange", () => {
-                     // 获取最新的编辑器lake内容
-                     const lake = engine.getDocument("text/lake");
-                     setContent(lake);
-                   });
-               }, 500)
-           }
-        };
+        //            const engine = createOpenEditor(domNode, {
+        //              image: {
+        //                uploadFileURL: "/api/upload", // 图片上传路径，post file请求
+        //                crawlURL: "/api/upload", // 图片url 转换成url post data：{url}
+        //              },
+        //              file: {
+        //                uploadFileURL: "/api/upload", // 文件上传路径
+        //              },
+        //            });
+        //            // 设置内容，如果是新建则设置成空，非新建则设置成上一次的内容
+        //            engine.setDocument("text/lake", "");
+        //            // 文档变动事件
+        //            engine.on("contentchange", () => {
+        //              // 获取最新的编辑器lake内容
+        //              const lake = engine.getDocument("text/lake");
+        //              setContent(lake);
+        //            });
+        //        }, 500)
+        //    }
+        // };
     }, 2000)
 
   }, []);

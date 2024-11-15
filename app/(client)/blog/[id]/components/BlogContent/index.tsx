@@ -14,11 +14,11 @@ const Editor = (props: any) => {
 
        // 可以添加一个事件监听器，在脚本加载完成后执行一些操作（可选）
        script.onload = function () {
-        const { createOpenViewer } = window.Doc;
-        const domNode = window.document.getElementById("yuqueditor");
-        const engine = createOpenViewer(domNode, {});
-        // 设置内容，编辑器获取的内容放到这里
-        engine.setDocument("text/html", props.info || "");
+        // const { createOpenViewer } = window.Doc;
+        // const domNode = window.document.getElementById("yuqueditor");
+        // const engine = createOpenViewer(domNode, {});
+        // // 设置内容，编辑器获取的内容放到这里
+        // engine.setDocument("text/html", props.info || "");
        };
 
   }, []);
