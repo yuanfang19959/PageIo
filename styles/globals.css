@@ -55,3 +55,11 @@ table {
       min-width: 1319px;
   }
 }
+
+@media screen and (max-width: 800px) {
+	.ne-doc-major-viewer .ne-viewer-layout-mode-fixed .ne-viewer-body {
+	  padding: 0 16px!important;
+	}
+	
+  }
+  

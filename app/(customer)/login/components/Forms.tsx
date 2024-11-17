@@ -2,9 +2,12 @@
 import { loginFn, regFn } from "@/api/in";
 import { Button, Form, Input, message, Radio } from "antd";
 import { useRouter } from "next/navigation";
+import { useState } from "react";
+import encryptString from "@/utils/p"
 
 const Forms = () => {
   const router = useRouter();
+  const [count, setCount] = useState(0)
   const onFinish = (values: any) => {
     const fn = (res) => {
       if (res.success) {
@@ -14,6 +17,7 @@ const Forms = () => {
         message.error(res.message)
       }
     };
+    values.password = encryptString(values.password)
     if (values.type == "login") {
       loginFn(values).then(fn);
     } else {
@@ -22,13 +26,13 @@ const Forms = () => {
   };
 
   return (
-    <Form onFinish={onFinish} labelAlign="right"  layout="vertical">
+    <Form onFinish={onFinish} labelAlign="right" layout="vertical">
       <Form.Item
         label="账号"
         name={"username"}
         rules={[{ required: true, message: "请输入" }]}
       >
-        <Input style={{ width: "100%" }} minLength={11} maxLength={11} showCount/>
+        <Input style={{ width: "100%" }} minLength={11} maxLength={11} showCount />
       </Form.Item>
 
       <Form.Item
@@ -36,18 +40,26 @@ const Forms = () => {
         name={"password"}
         rules={[{ required: true, message: "请输入" }]}
       >
-        <Input type="password" minLength={6}/>
+        <Input type="password" minLength={6} />
       </Form.Item>
+      <p
+        onClick={() => {
+          setCount((count) => ++count)
+        }}>~_~</p>
+      {
+        count > 10 && <>
+          <Form.Item label="类型" name={"type"} rules={[{ required: true }]} initialValue={"login"}>
+            <Radio.Group>
+              <Radio value="login">登录</Radio>
+              {/* <Radio value="register">注册</Radio> */}
+            </Radio.Group>
+          </Form.Item>
+          <Button htmlType="submit" style={{ width: "100%" }} type="primary">
+            登录
+          </Button>
+        </>
+      }
 
-      <Form.Item label="类型" name={"type"} rules={[{ required: true }]} initialValue={"login"}>
-        <Radio.Group>
-          <Radio value="login">登录</Radio>
-          <Radio value="register">注册</Radio>
-        </Radio.Group>
-      </Form.Item>
-      <Button htmlType="submit" style={{ width: "100%" }} type="primary">
-        登录
-      </Button>
     </Form>
   );
 };
