@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import "@/styles/yuque.css";
 import BaseFooter from "./components/BaseFooter/index";
 import BaseHeader from "./components/BaseHeader/index";
+import ScrollToTop from "./components/ScrollToTop/index";
 
 export default function RootLayout(props) {
   return (
@@ -19,6 +20,7 @@ export default function RootLayout(props) {
         <BaseHeader />
         {props.children}
         <BaseFooter />
+        <ScrollToTop />
       </body>
     </html>
   );

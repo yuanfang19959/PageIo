@@ -1,74 +1,32 @@
-$color45: rgba(0, 0, 0, .45);
-$color65: rgba(0, 0, 0, .65);
-$mobile-width: 800px;
-
-@media screen and (min-width: $mobile-width + 1) {
-  .topInfo {
-    display: flex;
-    max-width: 100%;
-    margin-top: 4px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    align-items: center;
-    .eachItem {
-      display: flex;
-      align-items: center;
-      .abc {
-        width: 15px;
-        opacity: .65;
-      }
-
-      .tuboxu {
-        padding: 0 26px 0 8px;
-        color: $color45;
-        font-weight: 400;
-        font-size: 14px;
-        font-family: "pingFang SC";
-        line-height: 22px;
-        vertical-align: middle;
-        cursor: pointer;
-        text-decoration: none;
-      }
-      .tuboxu:hover {
-        color: #217eff !important;
-      }
-      .tuboxu:not(last-child) {
-        padding: 0;
-      }
-    }
-  }
+.topInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
 }
 
-@media screen and (max-width: $mobile-width) {
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.text {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
   .topInfo {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 6px;
-    margin-bottom: 10px;
-    .eachItem {
-      display: flex;
-      align-items: center;
-
-      .abc {
-        width: 15px;
-        position: relative;
-        top:-1px;
-        opacity: .65;
-      }
-
-      .tuboxu {
-        padding: 0 16px 0 4px;
-        color: $color45;
-        font-weight: 400;
-        font-size: 14px;
-        font-family: "pingFang SC";
-        line-height: 22px;
-      }
-      .tuboxu:not(last-child) {
-        padding-right: 0;
-      }
-    }
+    gap: 16px;
+  }
+  
+  .infoItem {
+    font-size: 13px;
   }
 }

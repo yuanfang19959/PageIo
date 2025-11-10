@@ -1,9 +1,5 @@
-@media screen and (min-width: 801px) {
-  .content {
-    max-width: 1280px;
-    margin: 0 auto;
-    padding-top: 24px;
+.content {
+  :global {
+    // 基础样式继承父级样式
   }
 }
-
-

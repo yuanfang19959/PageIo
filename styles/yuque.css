@@ -23507,3 +23507,10 @@
     border-radius: 4px;
   }
   
+    .ne-doc-major-viewer .ne-viewer-layout-mode-fixed .ne-viewer-body > * {
+    max-width: initial!important;
+  }
+
+  .ne-doc-major-viewer .ne-viewer-layout-mode-fixed .ne-viewer-body {
+    padding: 0!important;
+  }
