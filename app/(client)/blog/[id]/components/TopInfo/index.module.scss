@@ -1,0 +1,32 @@
+.topInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.icon {
+  font-size: 16px;
+}
+
+.text {
+  font-weight: 400;
+}
+
+@media screen and (max-width: 768px) {
+  .topInfo {
+    gap: 16px;
+  }
+  
+  .infoItem {
+    font-size: 13px;
+  }
+}
