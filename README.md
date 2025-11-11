@@ -1,36 +1,255 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PageIo - 全栈博客系统
 
-## Getting Started
+基于 Next.js 14 + Express + MySQL 构建的现代化全栈博客平台，支持博客发布、阅读、用户认证等完整功能。
 
-First, run the development server:
+## ✨ 功能特性
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 📝 **博客管理** - 支持博客的创建、编辑、查看和删除
+- 🎨 **富文本编辑器** - 集成语雀编辑器，提供优质的写作体验
+- 🔐 **用户认证** - JWT token 身份验证机制
+- 📱 **响应式设计** - 移动端和桌面端完美适配
+- 🚀 **SSR/SSG** - Next.js 服务端渲染和静态生成
+- 💾 **MySQL 数据库** - 稳定可靠的数据存储
+- 🎯 **RESTful API** - 标准化的后端接口设计
+- 📊 **分页查询** - 支持博客列表分页加载
+
+## 🛠️ 技术栈
+
+### 前端
+- **框架**: Next.js 14.2.13 (App Router)
+- **UI 库**: React 18 + Ant Design 5.21.6
+- **样式**: SCSS/CSS Modules
+- **语言**: TypeScript 5
+- **富文本**: 语雀编辑器
+- **工具**: Moment.js, React-Responsive
+
+### 后端
+- **框架**: Express 4.18
+- **数据库**: MySQL (mysql2 驱动)
+- **认证**: JWT (jsonwebtoken)
+- **环境配置**: dotenv
+- **中间件**: CORS, body-parser
+
+## 📦 项目结构
+
+```
+PageIo/
+├── app/                      # Next.js App Router 页面
+│   ├── (client)/            # 客户端页面组
+│   │   ├── blog/           # 博客列表和详情
+│   │   ├── write/          # 博客编辑页
+│   │   └── components/     # 公共组件(Header, Footer)
+│   └── (customer)/         # 用户相关页面组
+│       └── login/          # 登录/注册页面
+├── api/                     # API 路由处理器
+│   ├── blog.ts            # 博客 API 客户端
+│   └── in.ts              # 认证相关 API
+├── server/                  # 后端服务器
+│   ├── app.js             # Express 应用入口
+│   ├── config/            # 数据库配置
+│   ├── controllers/       # 业务逻辑控制器
+│   ├── routes/            # 路由定义
+│   ├── middleware/        # 认证中间件
+│   └── scripts/           # 数据库初始化脚本
+├── utils/                   # 工具函数
+│   ├── request.ts         # HTTP 请求封装
+│   ├── parseTime.ts       # 时间处理
+│   └── viewport.ts        # 视口检测
+├── styles/                  # 全局样式
+├── constants/              # 常量定义
+└── middleware.ts           # Next.js 中间件
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 快速开始
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 环境要求
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Node.js >= 18.0.0
+- MySQL >= 5.7
+- npm/yarn/pnpm
 
-## Learn More
+### 1. 克隆项目
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+git clone https://github.com/yuanfang19959/PageIo.git
+cd PageIo
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 2. 安装依赖
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+#### 前端依赖
+```bash
+npm install
+# 或
+yarn install
+```
 
-## Deploy on Vercel
+#### 后端依赖
+```bash
+cd server
+npm install
+cd ..
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### 3. 配置环境变量
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+在 `server/` 目录下配置 `.env` 文件：
+
+```env
+# 数据库配置
+DB_HOST=localhost
+DB_PORT=3306
+DB_USER=root
+DB_PASSWORD=your_password
+DB_NAME=blog_db
+
+# JWT 配置
+JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+
+# 服务器配置
+PORT=3002
+NODE_ENV=development
+
+# CORS 配置
+CORS_ORIGIN=http://localhost:3000
+```
+
+### 4. 初始化数据库
+
+```bash
+cd server
+npm run init-db
+```
+
+### 5. 启动服务
+
+#### 启动后端服务器 (端口 3002)
+```bash
+cd server
+npm run dev
+```
+
+#### 启动前端服务 (端口 3000)
+新开一个终端窗口：
+```bash
+npm run dev
+```
+
+### 6. 访问应用
+
+打开浏览器访问：
+- 前端页面：[http://localhost:3000](http://localhost:3000)
+- 后端 API：[http://localhost:3002](http://localhost:3002)
+
+## 📱 主要页面
+
+| 路由 | 说明 |
+|------|------|
+| `/` | 自动跳转到博客列表 |
+| `/blog` | 博客列表页 |
+| `/blog/[id]` | 博客详情页 |
+| `/write` | 博客编辑页（需登录） |
+| `/login` | 登录/注册页 |
+
+## 🔌 API 接口
+
+### 博客相关
+
+```
+GET    /api/blogs              # 获取博客列表
+GET    /api/blogs/:id          # 获取博客详情
+POST   /api/blogs              # 创建博客（需认证）
+PUT    /api/blogs/:id          # 更新博客（需认证）
+DELETE /api/blogs/:id          # 删除博客（需认证）
+```
+
+### 用户相关
+
+```
+POST   /api/auth/login         # 用户登录
+POST   /api/auth/register      # 用户注册
+```
+
+详细 API 文档请查看：[server/API.md](server/API.md)
+
+## 🏗️ 构建部署
+
+### 构建前端
+
+```bash
+npm run build
+npm run start
+```
+
+### 启动后端生产环境
+
+```bash
+cd server
+NODE_ENV=production npm start
+```
+
+## 📝 开发指南
+
+### 添加新页面
+
+1. 在 `app/(client)/` 或 `app/(customer)/` 下创建新路由文件夹
+2. 添加 `page.tsx` 和样式文件 `index.module.scss`
+3. 配置 metadata 以优化 SEO
+
+### 添加新 API
+
+1. 在 `server/controllers/` 添加控制器
+2. 在 `server/routes/index.js` 注册路由
+3. 在 `api/` 创建对应的客户端调用函数
+
+### 样式开发
+
+- 使用 SCSS Modules 编写组件样式
+- 全局样式放在 `styles/globals.css`
+- 变量和 mixins 可在各 SCSS 文件中定义
+
+## 🔧 常见问题
+
+### 1. 数据库连接失败
+
+- 检查 MySQL 服务是否启动
+- 验证 `.env` 中数据库配置是否正确
+- 确认数据库用户权限
+
+### 2. 前端无法访问后端 API
+
+- 确保后端服务在 3002 端口运行
+- 检查 CORS 配置
+- 验证 `NEXT_PUBLIC_API_URL` 环境变量
+
+### 3. 编辑器无法加载
+
+- 确保引入了语雀编辑器的 CDN 资源
+- 检查浏览器控制台是否有加载错误
+
+### 4. GitHub 连接超时
+
+如遇到 `Failed to connect to github.com` 错误：
+- 检查网络连接
+- 尝试使用 SSH 替代 HTTPS
+- 配置 Git 代理（如使用 VPN）
+
+## 📄 License
+
+ISC
+
+## 👤 作者
+
+**yuanfang19959.zzb (平头哥)**
+
+## 🤝 贡献
+
+欢迎提交 Issue 和 Pull Request！
+
+## 📚 相关文档
+
+- [Next.js 文档](https://nextjs.org/docs)
+- [React 文档](https://react.dev)
+- [Ant Design 文档](https://ant.design)
+- [Express 文档](https://expressjs.com)
+- [MySQL 文档](https://dev.mysql.com/doc)
